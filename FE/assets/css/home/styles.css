@@ -503,7 +503,7 @@ header .song_side nav .user {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    cursor: pointer;
+   
 }
 
 header .song_side nav .user img {
@@ -512,6 +512,7 @@ header .song_side nav .user img {
     height: 30px;
     border-radius: 50%;
     box-shadow: 2px 2px 8px #131312;
+    cursor: pointer;
 }
 
 header .song_side .content {
@@ -749,7 +750,7 @@ header .song_side .popular_artists .item li img {
     display: none;
 }
 
-.sub-menu .feat-show.show {
+.sub-menu .feat-show.showSort {
     display: block;
     position: absolute;
     z-index: 10;
@@ -758,19 +759,19 @@ header .song_side .popular_artists .item li img {
     /* padding: 0px 0px 0px 5px; */
 }
 
-.show li {
+.showSort li {
     padding: 5px;
 }
 
-.show a {
+.showSort a {
     padding: 0px 10px 0px 10px;
 }
 
-.show a {
+.showSort a {
     color: white;
 }
 
-.show a:hover {
+.showSort a:hover {
     background-color: #979292;
     border-radius: 5px;
 }
@@ -872,3 +873,28 @@ li {
 .song_side {
     overflow-y: auto;
 }
+
+/* LogOut */
+.profile-menu {
+    width: 80px;
+    padding: 5px;
+    position: absolute;
+    top: 30px;
+    right: -25px;
+    margin-bottom: unset;
+    border-radius: 5px;
+    background: #282828;
+    margin-top: 5px;
+}
+
+.profile-menu li {
+    font-size: 12px;
+    padding: 5px 3px 5px 3px;
+    cursor: pointer;
+    transition: 0.2s linear;
+}
+
+.profile-menu li:hover {
+    background: rgb(105, 105, 170, .1);
+}
+

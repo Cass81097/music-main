@@ -279,6 +279,11 @@ current_audio.addEventListener('timeupdate', () => {
 
     currentEnd.innerText = `${min}:${sec}`;
 
+    if (currentEnd.innerText == `NaN:NaN`) {
+        currentEnd.innerText = `0:00`;
+    }
+
+
     let min1 = Math.floor(music_curr / 60);
     let sec1 = Math.floor(music_curr % 60);
     if (sec1 < 10) {

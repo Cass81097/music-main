@@ -11,16 +11,21 @@ function formLogin() {
                 <div class="login-card-header">
                     <h1>Đăng nhập</h1>
                 </div>
-                <div class="login-card-form">
+
+                <span id="alert" class="my-alert" style="margin-bottom: -10px"></span> 
+
+                <div id="form-1" class="login-card-form">
                     <div class="form-item">
                         <span class="form-item-icon material-symbols-rounded">person</span>
-                        <input type="text" placeholder="Nhập Username" id="username" 
+                        <input type="text" placeholder="Nhập tên đăng nhập" id="username" 
                         autofocus required>
+                        <span class="form-message"></span>
                     </div>
                     <div class="form-item">
                         <span class="form-item-icon material-symbols-rounded">lock</span>
                         <input type="password" placeholder="Nhập mật khẩu" id="password"
                         required>
+                        <span class="form-message"></span>
                     </div>
                     <div class="form-item-other">
                         <div class="checkbox">
@@ -38,6 +43,15 @@ function formLogin() {
         `;
 
     document.getElementById(`login`).innerHTML = str;
+
+    Validator({
+        form: '#form-1',
+        errorSelector: '.form-message',
+        rules: [
+            isRequired('#username', 'Vui lòng nhập tên đăng nhập'),
+            isRequired('#password', 'Vui lòng nhập mật khẩu'),
+        ]
+    })
 }
 
 function setCookie(name, value, days) {
@@ -74,13 +88,14 @@ async function login() {
     try {
         const res = await axios.post('http://localhost:3000/login', data);
         const token = res.data;
-        
+
         if (token == 'User does not exist') {
-            alert('Sai tên đăng nhập hoặc mật khẩu!')
+            // alert('Sai tên đăng nhập hoặc mật khẩu!')
+            document.getElementById('alert').innerHTML = `<p><img src="../assets/images/alert.jpeg"><span> Sai tên đăng nhập hoặc mật khẩu! </span></p>`;
         } else {
             alert('Đăng nhập thành công!')
             setCookie('userId', token, 7);
-            window.location.href = './home.html'; 
+            window.location.href = './home.html';
         }
 
     } catch (error) {
@@ -88,4 +103,11 @@ async function login() {
 
     }
 }
+
+// document.getElementById('login').addEventListener('keydown', function (event) {
+//     if (event.target.id === 'password' && event.key === 'Enter') {
+//         event.preventDefault();
+//         login();
+//     }
+// });
 

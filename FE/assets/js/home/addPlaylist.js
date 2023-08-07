@@ -6,7 +6,12 @@ $('#myModal').on('shown.bs.modal', function () {
 
 function showModal() {
     $('#exampleModal').modal('show');
-}   
+}  
+
+function deleteCookie() {
+    document.cookie = "userId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    window.location.href = "sign.html";
+}
 
 showAddPlayList(idCookie);
 

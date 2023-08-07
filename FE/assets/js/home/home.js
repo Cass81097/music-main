@@ -77,11 +77,20 @@ async function showUser(id) {
 
         data.map(item => {
             str = `
-            <img src="${item.imgUrl}">
+            <img src="${item.imgUrl}" class="profileUser" >
+            <ol class="profile-menu" style="display: none">
+              <li>Thông tin</li>
+              <li data-toggle="modal" data-target="#myModal">Đăng xuất</li>
+            </ol>
             `;
         });
 
         document.getElementById('user').innerHTML = str;
+
+        $('.profileUser').on('click', function () {
+            $(this).next('.profile-menu').toggle();
+        });
+        
     } catch (error) {
         console.error(error);
     }

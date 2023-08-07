@@ -17,11 +17,14 @@ class UserService {
                 username: user.username
             }
         })
-        if (user.username === userObj.username) {
+        console.log(user.username);
+            
+        if (user.username == userObj.username) {
             return "Account already exists"
         } else {
             return this.userRepository.save(user);
         }
+    
     }
 
     checkUser = async (user) => {

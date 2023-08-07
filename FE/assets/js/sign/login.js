@@ -44,6 +44,16 @@ function formLogin() {
 
     document.getElementById(`login`).innerHTML = str;
 
+
+    // Handle xóa Alert
+    const usernameInput = document.getElementById('username');
+    const alertElement = document.getElementById('alert');
+
+    usernameInput.addEventListener('input', function () {
+        alertElement.innerHTML = '';
+    });
+
+    // Handle Validate
     Validator({
         form: '#form-1',
         errorSelector: '.form-message',
@@ -54,6 +64,8 @@ function formLogin() {
     })
 }
 
+
+//Handle Cookie
 function setCookie(name, value, days) {
     let expires = "";
     if (days) {
